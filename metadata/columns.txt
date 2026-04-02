@@ -1,0 +1,12 @@
+State
+County
+FIPS Code
+Location
+Area (in sq mi)
+Population
+Housing Units
+Households
+Ppl Below 150% Poverty
+BIPOC Residents
+Households with no vehicle
+Percent of Overcrowded Housing Units
