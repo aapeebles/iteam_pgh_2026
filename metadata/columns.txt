@@ -1,12 +1,12 @@
-State
-County
-FIPS Code
-Location
-Area (in sq mi)
-Population
-Housing Units
-Households
-Ppl Below 150% Poverty
-BIPOC Residents
-Households with no vehicle
-Percent of Overcrowded Housing Units
+State:state
+County:county
+FIPS Code:fips
+Location:cen_track
+Area (in sq mi):area
+Population:pop
+Housing Units:h_units
+Households:households
+Ppl Below 150% Poverty:poverty
+BIPOC Residents:bipoc
+Households with no vehicle:carless
+Percent of Overcrowded Housing Units:overcrowds
