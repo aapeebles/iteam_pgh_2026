@@ -36,8 +36,15 @@ Final variables included and caluclated:
 
 
 ### Analysis
-<img src="./img/cloropleth2.png" width="400" height="300">
+
+<p align="left">
+  <img src="./img/cloropleth2.png" width="400" height="300" />
+  <img src="./img/cloropleth5.png" width="400" height="300"/>
+</p>
+
+
+<!-- <img src="./img/cloropleth2.png" width="400" height="300">
 
 
 
-<img src="./img/cloropleth5.png" width="400" height="300">
+<img src="./img/cloropleth5.png" width="400" height="300"> -->
