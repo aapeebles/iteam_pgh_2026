@@ -12,6 +12,8 @@ import matplotlib.ticker as mtick
 
 
 
+
+
 load_dotenv()  # Loads variables from .env into os.environ
 
 data_url = os.getenv('DATA_SOURCE')
@@ -19,6 +21,8 @@ sheet_id = os.getenv('SPREADSHEET_SHEET_ID')
 sheet_name = os.getenv('SHEET_NAME')
 county = os.getenv('COUNTY')
 state = os.getenv('STATE')
+
+print(sheet_id)
 
 # data[0]['DATA_SOURCE']
 
@@ -60,7 +64,7 @@ silver_three['ep_overcrowd'] = (silver_three["overcrowds"]/100).astype('float')
 
 
 
-silver_four = silver_three[["fips", "ep_pov", "ep_bipoc", "ep_carless", "ep_overcrowd"]]
+silver_four = silver_three[["fips_str", "ep_pov", "ep_bipoc", "ep_carless", "ep_overcrowd"]]
 silver_four[["ep_pov", "ep_bipoc", "ep_carless", "ep_overcrowd"]].describe().sort_values(by=["ep_pov"])
 
 
@@ -74,8 +78,29 @@ ax.yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
 # Get the figure associated with that axes and save it
 fig = ax.get_figure()
 fig.suptitle('Range of Social Vulnerability Indicators\n across Allegheny Census Tracks', fontsize=16) # The "Title"
-fig.text(0.5, 0.02, 'Figures Calculated by percent of total population or total households respectively', 
+fig.text(0.5, 0.02, 'Calculated by percent of total population or total households respectively', 
          ha='center', fontsize=10, wrap=True)
 fig.savefig('boxplot_details.png', dpi=300)
 
+
+# normalized columns
+numeric_cols = silver_four.select_dtypes(include=float)
+normalized_df=(numeric_cols-numeric_cols.min())/(numeric_cols.max()-numeric_cols.min())
+normalized_columns = {x:x.replace("ep_", "epn_") for x in normalized_df.columns.to_list()}
+normalized_df.rename(columns=normalized_columns,inplace=True)
+normalized_df = normalized_df.join(silver_four[["fips_str"]])
+
+cols = list(normalized_columns.values())
+cols
+normalized_df[cols] = normalized_df[cols].mask(normalized_df[cols] < .1, 0)
+normalized_df[cols] = normalized_df[cols].mask(normalized_df[cols] > .9, 1)
+
+
+
+normalized_df['Row_Total'] = normalized_df.sum(axis=1, numeric_only=True)
+normalized_df['risk_score']=(normalized_df['Row_Total']-normalized_df['Row_Total'].min())/(normalized_df['Row_Total'].max()-normalized_df['Row_Total'].min())
+normalized_df.loc[normalized_df['risk_score']>0.9]
+normalized_df.to_csv("normalized_data.csv", index=False)
+silver_four.to_csv("tract_percents.csv")
+silver_two[['pop','fips_str']].to_csv("population_size.csv")
 
