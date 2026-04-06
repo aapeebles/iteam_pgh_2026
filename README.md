@@ -14,10 +14,11 @@ Final variables included and caluclated:
 
 ### Distribution of variables across Allegheny County
 
-<img src="./img/boxplot_details.png" width="400" height="300">
+<p align="left">
+  <img src="./img/boxplot_details.png" width="400" height="300" />
+  <img src="./img/population_boxplot.png" width="200" height="300"/>
+</p>
 
-
-<img src="./img/population_boxplot.png" width="200" height="300">
 
 
 ### Highest Risk Score Tract Values
@@ -35,16 +36,31 @@ Final variables included and caluclated:
 | 3,505 | 51.36% | 91.18% | 41.44% | 0.00% | 66.92% |
 
 
-### Analysis
+### Mapping of High Risk Census Tracts Within Allegheny Counts
 
 <p align="left">
   <img src="./img/cloropleth2.png" width="400" height="300" />
   <img src="./img/cloropleth5.png" width="400" height="300"/>
 </p>
 
+A cursery analysis shows that the high risk score is highly correlated with Poverty, BIPOC, and carless. Which is not surprising, as the three variables are highly correlated to each other. Another factor, given the nature of percentages, is smaller population tracts are swayed to have a bigger impact. 
 
-<!-- <img src="./img/cloropleth2.png" width="400" height="300">
+|  | Correlation with Risk Score |
+| :---- | ----- |
+| % Poverty | 0.88 |
+| % BIPOC | 0.88 |
+| % Carless | 0.87 |
+| % Overcrowded | 0.45 |
 
+## Nieghborhoods represented in the top 10 high risk tracts
+**Hill district**: Bedford Dwellings,Terrace Village, East Hills, Middle Hill <br>
+**East End**: Larimer, Homewood South, Wilkinsburg <br>
+**Noth Side**: Summer Hill/Northview Heights <br>
+**Southside**: Knoxville
 
+While the analysis is for all of Allegheny County, the top 10 tracts were either in or adjacent to the city of Pittsburgh. Four of the tracts are specifically in the Hill district.
 
-<img src="./img/cloropleth5.png" width="400" height="300"> -->
+## Recommendations
+But recommendations? The Urban Redevelopment Authority of Pittsburgh(URA) along with the Hill Community Development Corps is heavily involved in the Hill District. The Greater Hill District Neighborhood Reinvestment Fund (GHDNRF) is already directed by community participation. Within the scope of a two hour exercise, my main thought was maintaining a strong network of social services *now* vs making suggestions for the Hill's future. The recent holes poked in Federal government's safety net leaves people experiencing poverty extremely vulnerable. The one small concrete recommendation I had is for 412 food rescue to put their free community fridges in high risk census tracts. I didn't see one in the Hill District. 
+
+I wanted more data!
